@@ -73,7 +73,7 @@ def generate_launch_description():
     
     # DECLARE Gazebo WORLD file:
     ur5_ros2_gazebo = os.path.join(
-        get_package_share_directory('ur5_ros2_gazebo'),
+        get_package_share_directory('ros2srrc_ur5e_gazebo'),
         'worlds',
         'ur5.world')
     # DECLARE Gazebo LAUNCH file:
@@ -140,7 +140,7 @@ def generate_launch_description():
     # ***** ROBOT DESCRIPTION ***** #
     # UR5 ROBOT Description file package:
     ur5_description_path = os.path.join(
-        get_package_share_directory('ur5_ros2_gazebo'))
+        get_package_share_directory('ros2srrc_ur5e_gazebo'))
     # UR5 ROBOT urdf file path:
     xacro_file = os.path.join(ur5_description_path,
                               'urdf',
@@ -194,7 +194,7 @@ def generate_launch_description():
     joint_trajectory_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["ur5_controller", "-c", "/controller_manager"],
+        arguments=["ur_controller", "-c", "/controller_manager"],
     )
 
 
@@ -207,11 +207,11 @@ def generate_launch_description():
 
     # *** PLANNING CONTEXT *** #
     # Robot description, SRDF:
-    robot_description_semantic_config = load_file("ur5_ros2_moveit2", "config/ur5.srdf")
+    robot_description_semantic_config = load_file("ros2srrc_ur5e_moveit2", "config/ur5.srdf")
     robot_description_semantic = {"robot_description_semantic": robot_description_semantic_config }
     
     # Kinematics.yaml file:
-    kinematics_yaml = load_yaml("ur5_ros2_moveit2", "config/kinematics.yaml")
+    kinematics_yaml = load_yaml("ros2srrc_ur5e_moveit2", "config/kinematics.yaml")
     robot_description_kinematics = {"robot_description_kinematics": kinematics_yaml}
 
     # Move group: OMPL Planning.
@@ -222,11 +222,11 @@ def generate_launch_description():
             "start_state_max_bounds_error": 0.1,
         }
     }
-    ompl_planning_yaml = load_yaml("ur5_ros2_moveit2", "config/ompl_planning.yaml")
+    ompl_planning_yaml = load_yaml("ros2srrc_ur5e_moveit2", "config/ompl_planning.yaml")
     ompl_planning_pipeline_config["move_group"].update(ompl_planning_yaml)
 
     # MoveIt!2 Controllers:
-    moveit_simple_controllers_yaml = load_yaml("ur5_ros2_moveit2", "config/ur5_controllers.yaml")
+    moveit_simple_controllers_yaml = load_yaml("ros2srrc_ur5e_moveit2", "config/ur_controllers.yaml")
     moveit_controllers = {
         "moveit_simple_controller_manager": moveit_simple_controllers_yaml,
         "moveit_controller_manager": "moveit_simple_controller_manager/MoveItSimpleControllerManager",
@@ -263,7 +263,7 @@ def generate_launch_description():
 
     # RVIZ:
     load_RVIZfile = LaunchConfiguration("rviz_file")
-    rviz_base = os.path.join(get_package_share_directory("ur5_ros2_moveit2"), "config")
+    rviz_base = os.path.join(get_package_share_directory("ros2srrc_ur5e_moveit2"), "config")
     rviz_full_config = os.path.join(rviz_base, "ur5_moveit2.rviz")
     rviz_node_full = Node(
         package="rviz2",

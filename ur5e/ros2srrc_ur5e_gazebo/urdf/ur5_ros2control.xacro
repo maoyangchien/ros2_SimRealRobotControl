@@ -72,7 +72,7 @@
       <gazebo>
         <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
           <robot_sim_type>gazebo_ros2_control/GazeboSystem</robot_sim_type>
-          <parameters>$(find ur5_ros2_gazebo)/config/ur5_controller.yaml</parameters>
+          <parameters>$(find ros2srrc_ur5e_gazebo)/config/ur_controller.yaml</parameters>
         </plugin>
       </gazebo>
     </xacro:if>

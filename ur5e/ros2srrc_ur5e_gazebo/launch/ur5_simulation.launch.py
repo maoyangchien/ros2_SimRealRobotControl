@@ -73,7 +73,7 @@ def generate_launch_description():
     # ***** GAZEBO ***** #   
     # DECLARE Gazebo WORLD file:
     ur5_ros2_gazebo = os.path.join(
-        get_package_share_directory('ur5_ros2_gazebo'),
+        get_package_share_directory('ros2srrc_ur5e_gazebo'),
         'worlds',
         'ur5.world')
     # DECLARE Gazebo LAUNCH file:
@@ -140,7 +140,7 @@ def generate_launch_description():
     # ***** ROBOT DESCRIPTION ***** #
     # UR5 ROBOT Description file package:
     ur5_description_path = os.path.join(
-        get_package_share_directory('ur5_ros2_gazebo'))
+        get_package_share_directory('ros2srrc_ur5e_gazebo'))
     # UR5 ROBOT ROBOT urdf file path:
     xacro_file = os.path.join(ur5_description_path,
                               'urdf',
@@ -184,7 +184,7 @@ def generate_launch_description():
     joint_trajectory_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["ur5_controller", "-c", "/controller_manager"],
+        arguments=["ur_controller", "-c", "/controller_manager"],
     )
 
     # ***** RETURN LAUNCH DESCRIPTION ***** #

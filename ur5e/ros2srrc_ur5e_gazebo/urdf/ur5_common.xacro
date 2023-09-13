@@ -74,7 +74,7 @@
   <xacro:macro name="ur5_common">
     
     <!-- ***** PARAMETER VALUES ***** -->
-    <!-- All parameter values have been taken from the following .yaml files, located in the ~/ur5_ros2_gazebo/config folder:
+    <!-- All parameter values have been taken from the following .yaml files, located in the ~/ros2srrc_ur5e_gazebo/config folder:
           - default_kinematics.yaml
           - joint_limits.yaml
           - physical_parameters.yaml

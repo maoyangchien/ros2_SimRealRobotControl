@@ -62,7 +62,7 @@
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="ur5">
 
   <!-- Load and initialise UR5 INITIAL POSITIONS FILE: 
-  <xacro:arg name="initial_positions_file" default="$(find ur5_ros2_gazebo/config/initial_positions.yaml"/>
+  <xacro:arg name="initial_positions_file" default="$(find ros2srrc_ur5e_gazebo/config/initial_positions.yaml"/>
   <xacro:property name="initial_positions_file" default="$(arg initial_positions_file)"/> -->
   <!-- IF ADD TO UR5: initial_positions="${load_yaml(initial_positions_file)}" -->
   
@@ -84,7 +84,7 @@
   <xacro:arg name="safety_k_position" default="20"/>
 
   <!-- Include XACRO-MACRO file of the UR5 ROBOT: -->
-  <xacro:include filename="$(find ur5_ros2_gazebo)/urdf/ur5_macro.urdf.xacro"/>	
+  <xacro:include filename="$(find ros2srrc_ur5e_gazebo)/urdf/ur5_macro.urdf.xacro"/>	
   <xacro:ur5 
     prefix=""
     EE_no="${EE_no}"
