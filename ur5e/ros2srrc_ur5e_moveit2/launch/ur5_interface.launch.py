@@ -214,6 +214,13 @@ def generate_launch_description():
     kinematics_yaml = load_yaml("ros2srrc_ur5e_moveit2", "config/kinematics.yaml")
     robot_description_kinematics = {"robot_description_kinematics": kinematics_yaml}
 
+    # joint_limits.yaml file:
+    joint_limits_yaml = load_yaml(
+        "ros2srrc_ur10e_moveit2", "config/joint_limits.yaml"
+    )
+    joint_limits = {'robot_description_planning': joint_limits_yaml}
+
+
     # Move group: OMPL Planning.
     ompl_planning_pipeline_config = {
         "move_group": {
@@ -253,6 +260,7 @@ def generate_launch_description():
             robot_description,
             robot_description_semantic,
             kinematics_yaml,
+            joint_limits,
             ompl_planning_pipeline_config,
             trajectory_execution,
             moveit_controllers,
@@ -281,87 +289,22 @@ def generate_launch_description():
         condition=UnlessCondition(load_RVIZfile),
     )
 
-    # *********************** ROS2.0 Robot/End-Effector Actions/Triggers *********************** #
-    # MoveJ ACTION:
-    moveJ_interface = Node(
-        name="moveJ_action",
-        package="ros2_actions",
-        executable="moveJ_action",
-        output="screen",
-        parameters=[robot_description, robot_description_semantic, kinematics_yaml, {"use_sim_time": True}, {"ROB_PARAM": 'ur5_arm'}],
-    )
-    # MoveG ACTION:
-    # moveG_interface = Node(
-    #     name="moveG_action",
-    #     package="ros2_actions",
-    #     executable="moveG_action",
-    #     output="screen",
-    #     parameters=[robot_description, robot_description_semantic, kinematics_yaml, {"use_sim_time": True}, {"ROB_PARAM": 'ur5_gripper'}],
-    # )
-    # MoveXYZW ACTION:
-    moveXYZW_interface = Node(
-        name="moveXYZW_action",
-        package="ros2_actions",
-        executable="moveXYZW_action",
-        output="screen",
-        parameters=[robot_description, robot_description_semantic, kinematics_yaml, {"use_sim_time": True}, {"ROB_PARAM": 'ur5_arm'}],
-    )
-    # MoveL ACTION:
-    moveL_interface = Node(
-        name="moveL_action",
-        package="ros2_actions",
-        executable="moveL_action",
-        output="screen",
-        parameters=[robot_description, robot_description_semantic, kinematics_yaml, {"use_sim_time": True}, {"ROB_PARAM": 'ur5_arm'}],
-    )
-    # MoveR ACTION:
-    moveR_interface = Node(
-        name="moveR_action",
-        package="ros2_actions",
-        executable="moveR_action",
-        output="screen",
-        parameters=[robot_description, robot_description_semantic, kinematics_yaml, {"use_sim_time": True}, {"ROB_PARAM": 'ur5_arm'}],
-    )
-    # MoveXYZ ACTION:
-    moveXYZ_interface = Node(
-        name="moveXYZ_action",
-        package="ros2_actions",
-        executable="moveXYZ_action",
-        output="screen",
-        parameters=[robot_description, robot_description_semantic, kinematics_yaml, {"use_sim_time": True}, {"ROB_PARAM": 'ur5_arm'}],
-    )
-    # MoveYPR ACTION:
-    moveYPR_interface = Node(
-        name="moveYPR_action",
-        package="ros2_actions",
-        executable="moveYPR_action",
-        output="screen",
-        parameters=[robot_description, robot_description_semantic, kinematics_yaml, {"use_sim_time": True}, {"ROB_PARAM": 'ur5_arm'}],
-    )
-    # MoveROT ACTION:
-    moveROT_interface = Node(
-        name="moveROT_action",
-        package="ros2_actions",
-        executable="moveROT_action",
-        output="screen",
-        parameters=[robot_description, robot_description_semantic, kinematics_yaml, {"use_sim_time": True}, {"ROB_PARAM": 'ur5_arm'}],
-    )
-    # MoveRP ACTION:
-    moveRP_interface = Node(
-        name="moveRP_action",
-        package="ros2_actions",
-        executable="moveRP_action",
-        output="screen",
-        parameters=[robot_description, robot_description_semantic, kinematics_yaml, {"use_sim_time": True}, {"ROB_PARAM": 'ur5_arm'}],
-    )
-
-    # ATTACHER action for ros2_grasping plugin:
-    Attacher = Node(
-        name="ATTACHER_action",
-        package="ros2_grasping",
-        executable="attacher_action.py",
-        output="screen",
-    )
+    if (EE_no == "true"):
+        
+        MoveInterface = Node(
+            name="move",
+            package="ros2srrc_execution",
+            executable="move",
+            output="screen",
+            parameters=[robot_description, robot_description_semantic, kinematics_yaml, {"use_sim_time": True}, {"ROB_PARAM": "ur10e"}, {"EE_PARAM": "none"}, {"ENV_PARAM": "gazebo"}],
+        )
+        SequenceInterface = Node(
+            name="sequence",
+            package="ros2srrc_execution",
+            executable="sequence",
+            output="screen",
+            parameters=[robot_description, robot_description_semantic, kinematics_yaml, {"use_sim_time": True}, {"ROB_PARAM": "ur10e"}, {"EE_PARAM": "none"}, {"ENV_PARAM": "gazebo"}],
+        )
     
     return LaunchDescription(
         [
@@ -409,16 +352,8 @@ def generate_launch_description():
                         TimerAction(
                             period=2.0,
                             actions=[
-                                moveJ_interface,
-                                # moveG_interface,
-                                moveL_interface,
-                                moveR_interface,
-                                moveXYZ_interface,
-                                moveXYZW_interface,
-                                moveYPR_interface,
-                                moveROT_interface,
-                                moveRP_interface,
-                                Attacher,
+                                MoveInterface,
+                                SequenceInterface,
                             ]
                         ),
 
