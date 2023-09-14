@@ -263,7 +263,7 @@ def generate_launch_description():
 
     # RVIZ:
     load_RVIZfile = LaunchConfiguration("rviz_file")
-    rviz_base = os.path.join(get_package_share_directory("ur5_ros2_moveit2"), "config")
+    rviz_base = os.path.join(get_package_share_directory("ros2srrc_ur5e_moveit2"), "config")
     rviz_full_config = os.path.join(rviz_base, "ur5_moveit2.rviz")
     rviz_node_full = Node(
         package="rviz2",

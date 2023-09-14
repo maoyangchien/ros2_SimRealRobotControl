@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(ur5_ros2_moveit2)
+project(ros2srrc_ur5e_moveit2)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
