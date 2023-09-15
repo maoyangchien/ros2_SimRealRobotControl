@@ -25,10 +25,8 @@
 #  Date: July, 2022.                                                                    #
 #                                                                                       #
 # ===================================== COPYRIGHT ===================================== #
-
-# ===================================== COPYRIGHT ===================================== #
-#                                                                                       #
-#  Some of the information used to build the ROS2 UR5-Robot .urdf files in this ROS2    #
+[ERROR] [launch]: Caught exception in launch (see debug for traceback): Caught exception when trying to load file of format [py]: not well-formed (invalid token): line 216, column 19
+Some of the information used to build the ROS2 UR5-Robot .urdf files in this ROS2    #
 #  repository has been taken from the following resources:                              #
 #       - Universal Robots ROS2 Description:                                            #
 #         https://github.com/UniversalRobots/Universal_Robots_ROS2_Description          #
@@ -38,10 +36,8 @@
 #  AUTHORS:                                                                             #
 #       - ROS-Industrial - https://rosindustrial.org                                    #
 #       - Universal Robots - https://github.com/UniversalRobots                         #
-#       - Nadia Hammoudeh Garcia, Kelsey Hawkins, G.A. vd. Hoorn, Lovro Ivanov, Mathias #
-#         Ludtke, Wim Meeussen, Felix Messmer, Miguel Prada Sarasola, Denis Stogl,      #
-#         Andy Zelenak, Marvin Grosse Besselmann.                                       #
-#       - Maintainers: Felix Exner (exner@fzi.de), Tristan Schnell (schnell@fzi.de),    #
+#  [ERROR] [launch]: Caught exception in launch (see debug for traceback): Caught exception when trying to load file of format [py]: not well-formed (invalid token): line 216, column 19
+     - Maintainers: Felix Exner (exner@fzi.de), Tristan Schnell (schnell@fzi.de),    #
 #         Lovro Ivanov (lovro.ivanov@gmail.com), Denis Stogl (denis@stoglrobotics.de).  #
 #                                                                                       #
 #  Copyright (c) 2021, Universal Robots A/S                                             #
@@ -61,27 +57,27 @@
 
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
 
-  <!-- XACRO-MACRO of UR5 ROBOT: -->
-  <xacro:macro name="ur5" params="prefix EE_no safety_limits safety_pos_margin safety_k_position">
+  <!-- XACRO-MACRO of UR5e ROBOT: -->
+  <xacro:macro name="ur5e" params="prefix EE_no safety_limits safety_pos_margin safety_k_position">
   
-    <!-- Load UR5 ROBOT TRANSMISSION file: -->
-    <xacro:include filename="$(find ros2srrc_ur5e_gazebo)/urdf/ur5_transmission.xacro" />
-    <xacro:ur5_transmission 
+    <!-- Load UR5e ROBOT TRANSMISSION file: -->
+    <xacro:include filename="$(find ros2srrc_ur5e_gazebo)/urdf/ur5e_transmission.xacro" />
+    <xacro:ur5e_transmission 
       prefix=""
     />
     
-    <!-- Load UR5 ROBOT ROS2_CONTROL file: -->
-    <xacro:include filename="$(find ros2srrc_ur5e_gazebo)/urdf/ur5_ros2control.xacro" />
+    <!-- Load UR5e ROBOT ROS2_CONTROL file: -->
+    <xacro:include filename="$(find ros2srrc_ur5e_gazebo)/urdf/ur5e_ros2control.xacro" />
     <xacro:ur5_ros2control 
       prefix=""
       EE_no="${EE_no}"
     />
-
-    <!-- Load UR5 SPECIFICATIONS file: -->
-    <xacro:include filename="$(find ros2srrc_ur5e_gazebo)/urdf/ur5_common.xacro" />
+ 
+    <!-- Load UR5e SPECIFICATIONS file: -->
+    <xacro:include filename="$(find ros2srrc_ur5e_gazebo)/urdf/ur5e_common.xacro" />
     <xacro:ur5_common/>
 
-    <!-- ***** ur5 ROBOT .urdf SERIAL CHAIN *****-->
+    <!-- ***** ur5e ROBOT .urdf SERIAL CHAIN *****-->
     <!-- Links: -->
     <link name="${prefix}base_link"/>
     <link name="${prefix}base_link_inertia">
@@ -90,7 +86,8 @@
         <geometry>
           <mesh filename="file://$(find ros2srrc_ur5e_gazebo)/meshes/visual/base.dae"/>
         </geometry>
-        <material name="LightGrey">
+        
+      <material name="LightGrey">
           <color rgba="0.7 0.7 0.7 1.0"/>
         </material>
       </visual>
@@ -133,7 +130,7 @@
         <material name="LightGrey">
           <color rgba="0.7 0.7 0.7 1.0"/>
         </material>
-      </visual>
+   </visual>
       <collision>
         <origin xyz="0 0 ${shoulder_offset}" rpy="${pi/2} 0 ${-pi/2}"/>
         <geometry>
@@ -141,10 +138,10 @@
         </geometry>
       </collision>
       <xacro:cylinder_inertial radius="${upperarm_inertia_radius}" length="${upperarm_inertia_length}" mass="${upper_arm_mass}">
-        <origin xyz="${-0.5 * upperarm_inertia_length} 0.0 ${upper_arm_inertia_offset}" rpy="0 ${pi/2} 0" />
+         <origin xyz="${-0.5 * upperarm_inertia_length} 0.0 ${upper_arm_inertia_offset}" rpy="0 ${pi/2} 0" />
       </xacro:cylinder_inertial>
     </link>
-    <link name="${prefix}forearm_link">
+  <link name="${prefix}forearm_link">
       <visual>
         <origin xyz="0 0 ${elbow_offset}" rpy="${pi/2} 0 ${-pi/2}"/>
         <geometry>
@@ -156,7 +153,7 @@
       </visual>
       <collision>
         <origin xyz="0 0 ${elbow_offset}" rpy="${pi/2} 0 ${-pi/2}"/>
-        <geometry>
+     <geometry>
           <mesh filename="file://$(find ros2srrc_ur5e_gazebo)/meshes/collision/forearm.stl"/>
         </geometry>
       </collision>
@@ -171,7 +168,7 @@
           <mesh filename="file://$(find ros2srrc_ur5e_gazebo)/meshes/visual/wrist1.dae"/>
         </geometry>
         <material name="LightGrey">
-          <color rgba="0.7 0.7 0.7 1.0"/>
+      <color rgba="0.7 0.7 0.7 1.0"/>
         </material>
       </visual>
       <collision>

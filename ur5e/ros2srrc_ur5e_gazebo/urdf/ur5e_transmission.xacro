@@ -49,7 +49,8 @@
 #                                                                                       #
 #  CHANGES MADE:                                                                        #
 #  Robot information/specifications have been taken, and the code has been modified and #
-#  re-organised in accordance with the ros2_RobotSimulation standards.                  #
+#  re-or[ERROR] [launch]: Caught exception in launch (see debug for traceback): Caught exception when trying to load file of format [py]: not well-formed (invalid token): line 216, column 19
+ganised in accordance with the ros2_RobotSimulation standards.                  #
 #                                                                                       #
 # ===================================== COPYRIGHT ===================================== #
 
@@ -61,7 +62,7 @@
 
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
 
-  <xacro:macro name="ur5_transmission" params="prefix">
+  <xacro:macro name="ur5e_transmission" params="prefix">
 
     <transmission name="${prefix}shoulder_pan_trans">
       <type>transmission_interface/SimpleTransmission</type>

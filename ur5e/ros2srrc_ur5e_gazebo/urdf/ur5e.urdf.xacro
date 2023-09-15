@@ -28,7 +28,7 @@
 
 # ===================================== COPYRIGHT ===================================== #
 #                                                                                       #
-#  Some of the information used to build the ROS2 UR5-Robot .urdf files in this ROS2    #
+#  Some of the information used to build the ROS2 UR5e-Robot .urdf files in this ROS2    #
 #  repository has been taken from the following resources:                              #
 #       - Universal Robots ROS2 Description:                                            #
 #         https://github.com/UniversalRobots/Universal_Robots_ROS2_Description          #
@@ -59,12 +59,12 @@
 
 -->
 
-<robot xmlns:xacro="http://wiki.ros.org/xacro" name="ur5">
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="ur5e">
 
-  <!-- Load and initialise UR5 INITIAL POSITIONS FILE: 
+  <!-- Load and initialise UR5e INITIAL POSITIONS FILE: 
   <xacro:arg name="initial_positions_file" default="$(find ros2srrc_ur5e_gazebo/config/initial_positions.yaml"/>
   <xacro:property name="initial_positions_file" default="$(arg initial_positions_file)"/> -->
-  <!-- IF ADD TO UR5: initial_positions="${load_yaml(initial_positions_file)}" -->
+  <!-- IF ADD TO UR5e: initial_positions="${load_yaml(initial_positions_file)}" -->
   
   <!-- ===== ARGUMENTS ===== -->
 
@@ -83,9 +83,9 @@
   <xacro:arg name="safety_pos_margin" default="0.15"/>
   <xacro:arg name="safety_k_position" default="20"/>
 
-  <!-- Include XACRO-MACRO file of the UR5 ROBOT: -->
-  <xacro:include filename="$(find ros2srrc_ur5e_gazebo)/urdf/ur5_macro.urdf.xacro"/>	
-  <xacro:ur5 
+  <!-- Include XACRO-MACRO file of the UR5e ROBOT-->
+  <xacro:include filename="$(find ros2srrc_ur5e_gazebo)/urdf/ur5e_macro.urdf.xacro"/>	
+  <xacro:ur5e 
     prefix=""
     EE_no="${EE_no}"
     safety_limits="$(arg safety_limits)"
