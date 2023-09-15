@@ -108,17 +108,17 @@
     <xacro:property name="wrist_3_effort_limit" value="28.0" scope="parent"/>
 
     <!-- DH PARAMETERS -->
-    <xacro:property name="d1" value="0.089159" scope="parent"/>
+    <xacro:property name="d1" value="0.163" scope="parent"/>
     <xacro:property name="a2" value="-0.42500" scope="parent"/>
     <xacro:property name="a3" value="-0.39225" scope="parent"/>
-    <xacro:property name="d4" value="0.10915" scope="parent"/>
-    <xacro:property name="d5" value="0.09465" scope="parent"/>
-    <xacro:property name="d6" value="0.0823" scope="parent"/>
+    <xacro:property name="d4" value="0.134" scope="parent"/>
+    <xacro:property name="d5" value="0.100" scope="parent"/>
+    <xacro:property name="d6" value="0.100" scope="parent"/>
 
     <!-- kinematics -->
     <xacro:property name="shoulder_x" value="0" scope="parent"/>
     <xacro:property name="shoulder_y" value="0" scope="parent"/>
-    <xacro:property name="shoulder_z" value="0.089159" scope="parent"/>
+    <xacro:property name="shoulder_z" value="0.1625" scope="parent"/>
     <xacro:property name="shoulder_roll" value="0" scope="parent"/>
     <xacro:property name="shoulder_pitch" value="0" scope="parent"/>
     <xacro:property name="shoulder_yaw" value="0" scope="parent"/>
@@ -139,35 +139,35 @@
 
     <xacro:property name="wrist_1_x" value="-0.39225" scope="parent"/>
     <xacro:property name="wrist_1_y" value="0" scope="parent"/>
-    <xacro:property name="wrist_1_z" value="0.10915" scope="parent"/>
+    <xacro:property name="wrist_1_z" value="0.1333" scope="parent"/>
     <xacro:property name="wrist_1_roll" value="0" scope="parent"/>
     <xacro:property name="wrist_1_pitch" value="0" scope="parent"/>
     <xacro:property name="wrist_1_yaw" value="0" scope="parent"/>
 
     <xacro:property name="wrist_2_x" value="0" scope="parent"/>
-    <xacro:property name="wrist_2_y" value="-0.09465" scope="parent"/>
-    <xacro:property name="wrist_2_z" value="-1.941303950897609e-11" scope="parent"/>
+    <xacro:property name="wrist_2_y" value="-0.0997" scope="parent"/>
+    <xacro:property name="wrist_2_z" value="-2.044881182297852e-11" scope="parent"/>
     <xacro:property name="wrist_2_roll" value="1.570796327" scope="parent"/>
     <xacro:property name="wrist_2_pitch" value="0" scope="parent"/>
     <xacro:property name="wrist_2_yaw" value="0" scope="parent"/>
 
     <xacro:property name="wrist_3_x" value="0" scope="parent"/>
-    <xacro:property name="wrist_3_y" value="0.0823" scope="parent"/>
-    <xacro:property name="wrist_3_z" value="-1.688001216681175e-11" scope="parent"/>
+    <xacro:property name="wrist_3_y" value="0.09959999999999999" scope="parent"/>
+    <xacro:property name="wrist_3_z" value="-2.042830148012698e-11" scope="parent"/>
     <xacro:property name="wrist_3_roll" value="1.570796326589793" scope="parent"/>
     <xacro:property name="wrist_3_pitch" value="3.141592653589793" scope="parent"/>
     <xacro:property name="wrist_3_yaw" value="3.141592653589793" scope="parent"/>
 
     <!-- OFFSETS -->
-    <xacro:property name="shoulder_offset" value="0.13585" scope="parent"/>
-    <xacro:property name="elbow_offset" value="0.0165" scope="parent"/>
+    <xacro:property name="shoulder_offset" value="0.138" scope="parent"/>
+    <xacro:property name="elbow_offset" value="0.007" scope="parent"/>
 
     <!-- INERTIA PARAMETERS -->
     <!-- mass -->
     <xacro:property name="base_mass" value="4.0" scope="parent"/>
     <xacro:property name="shoulder_mass" value="3.7" scope="parent"/>
-    <xacro:property name="upper_arm_mass" value="8.393" scope="parent"/>
-    <xacro:property name="upper_arm_inertia_offset" value="0.136" scope="parent"/>
+    <xacro:property name="upper_arm_mass" value="8.3930" scope="parent"/>
+    <xacro:property name="upper_arm_inertia_offset" value="0.138" scope="parent"/>
     <xacro:property name="forearm_mass" value="2.275" scope="parent"/>
     <xacro:property name="wrist_1_mass" value="1.219" scope="parent"/>
     <xacro:property name="wrist_2_mass" value="1.219" scope="parent"/>
@@ -175,18 +175,18 @@
     <!-- link inertia parameter -->
     <xacro:property name="base_inertia_radius" value="0.06" scope="parent"/>
     <xacro:property name="base_inertia_length" value="0.05" scope="parent"/>
-    <xacro:property name="shoulder_inertia_radius" value="0.075" scope="parent"/>
-    <xacro:property name="shoulder_inertia_length" value="0.178" scope="parent"/>
+    <xacro:property name="shoulder_inertia_radius" value="0.06" scope="parent"/>
+    <xacro:property name="shoulder_inertia_length" value="0.15" scope="parent"/>
     <xacro:property name="upperarm_inertia_radius" value="0.06" scope="parent"/>
     <xacro:property name="upperarm_inertia_length" value="0.425" scope="parent"/>
     <xacro:property name="forearm_inertia_radius" value="0.06" scope="parent"/>
-    <xacro:property name="forearm_inertia_length" value="0.39225" scope="parent"/>
+    <xacro:property name="forearm_inertia_length" value="0.3922" scope="parent"/>
     <xacro:property name="wrist_1_inertia_radius" value="0.06" scope="parent"/>
-    <xacro:property name="wrist_1_inertia_length" value="0.095" scope="parent"/>
+    <xacro:property name="wrist_1_inertia_length" value="0.12" scope="parent"/>
     <xacro:property name="wrist_2_inertia_radius" value="0.06" scope="parent"/>
-    <xacro:property name="wrist_2_inertia_length" value="0.095" scope="parent"/>
+    <xacro:property name="wrist_2_inertia_length" value="0.12" scope="parent"/>
     <xacro:property name="wrist_3_inertia_radius" value="0.0375" scope="parent"/>
-    <xacro:property name="wrist_3_inertia_length" value="0.0305" scope="parent"/>
+    <xacro:property name="wrist_3_inertia_length" value="0.0458" scope="parent"/>
     <!-- center of mass -->
     <xacro:property name="shoulder_cog" value="0.0 0.00193 -0.02561" scope="parent"/>
     <xacro:property name="upper_arm_cog" value="0.0 -0.024201 0.2125" scope="parent"/>
