@@ -202,9 +202,10 @@
     <xacro:property name="wrist_radius" value="0.045" scope="parent"/>
 
     <!-- VISUAL OFFSETS -->
-    <xacro:property name="wrist_1_visual_offset" value="-0.093" scope="parent"/>
-    <xacro:property name="wrist_2_visual_offset" value="-0.095" scope="parent"/>
-    <xacro:property name="wrist_3_visual_offset" value="-0.0818" scope="parent"/>
+    <xacro:property name="wrist_1_visual_offset" value="-0.127" scope="parent"/>
+    <xacro:property name="wrist_2_visual_offset" value="-0.0997" scope="parent"/>
+    <xacro:property name="wrist_3_visual_offset" value="-0.0989" scope="parent"/>
+    
     
     <!--KINEMATICS HASH-->
     <xacro:property name="kinematics_hash" value="calib_209549117540498681" scope="parent"/>
