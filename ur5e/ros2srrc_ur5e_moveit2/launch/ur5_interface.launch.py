@@ -144,7 +144,7 @@ def generate_launch_description():
     # UR5 ROBOT urdf file path:
     xacro_file = os.path.join(ur5_description_path,
                               'urdf',
-                              'ur5.urdf.xacro')
+                              'ur5e.urdf.xacro')
     # Generate ROBOT_DESCRIPTION for UR5 ROBOT:
     doc = xacro.parse(open(xacro_file))
     xacro.process_doc(doc, mappings={
@@ -159,7 +159,7 @@ def generate_launch_description():
     # SPAWN ROBOT TO GAZEBO:
     spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
                         arguments=['-topic', 'robot_description',
-                                   '-entity', 'ur5'],
+                                   '-entity', 'ur5e'],
                         output='screen')
 
     # ***** STATIC TRANSFORM ***** #
